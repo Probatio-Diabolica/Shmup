@@ -29,12 +29,13 @@ class Game:
     __height     :  int           = gameHeight
     __width      :  int           = gameWidth
     __screen     :  pgm.Surface
-    __player     :  MC
+    
     # __MC         :  Player              
     def __init__(self,state:baseWindow=home()) -> None:
         pgm.init()
         global INST
         INST=self
+        self.__player     :  MC 
         self.__state=state #the state or screen we are in
         self.__running=True #running 
         self.__background=state.getBackground() # background of the window
@@ -92,7 +93,6 @@ class Game:
     def update(self)->None:
         self.events()
         self.__state.updates()
-        # self.__player.updates()
         
         
     def render(self)->None:
@@ -220,17 +220,17 @@ class Game:
 
             if(event.type ==pgm.KEYDOWN):
                 if(event.key==pgm.K_UP or event.key==pgm.K_KP_8):
-                    self.__player.__Up=True
+                    self.__player.toggleUp()
                     print(DEBUG_STR+"up")
                 elif(event.key==pgm.K_DOWN or event.key==pgm.K_KP_2):
-                    self.__player.__Down=True
+                    self.__player.toggleDown()
                     print(DEBUG_STR+"down")
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
-                    self.__player.__Right=True
+                    self.__player.toggleRight()
                     print(DEBUG_STR+"right")
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
-                    self.__player.__Left=True
+                    self.__player.toggleLeft()
                     print(DEBUG_STR+"Left")
                 elif(event.key==pgm.K_ESCAPE or event.key==pgm.K_x):...
                     # print(DEBUG_STR+"up")
@@ -238,17 +238,17 @@ class Game:
 
             if(event.type == pgm.KEYUP):
                 if(event.key==pgm.K_UP or event.key==pgm.K_KP_8):
-                    self.__player.__Up=False
+                    self.__player.toggleUp()
                     print(DEBUG_STR+"up")
                 elif(event.key==pgm.K_DOWN or event.key==pgm.K_KP_2):
-                    self.__player.__Down=False
+                    self.__player.toggleDown()
                     print(DEBUG_STR+"down")
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
-                    self.__player.__Right=False
+                    self.__player.toggleRight()
                     print(DEBUG_STR+"right")
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
-                    self.__player.__Left=False
+                    self.__player.toggleLeft()
                     print(DEBUG_STR+"Left")
 
     #__depricate
