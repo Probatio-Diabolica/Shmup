@@ -2,8 +2,9 @@ from .gameConf import gameHeight,gameWidth
 from State.State import baseWindow,home,menu,dummyState,msgPair
 from State.Play import play
 from State.CharacterSelection import Character
-from Entity.Entity import Entity,MC
-from Entity.Player import characterA
+from Entity.Entity import Entity
+from Entity.playables import MC
+from Entity.playables.Player import characterA
 from State.stateConf import CHAR_B_TEST,BLACK_BG
 import pygame as pgm
 import time
@@ -91,6 +92,8 @@ class Game:
     def update(self)->None:
         self.events()
         self.__state.updates()
+        # self.__player.updates()
+        
         
     def render(self)->None:
         pgm.display.update() #!!most imp line don't forget it        
@@ -99,7 +102,7 @@ class Game:
     def renderStage(self)->None:
         pgm.display.update() #!!most imp line don't forget it        
         self.__state.render(self.__screen)
-        self.__player.render(self.__screen)
+        self.__screen.blit(self.__player.getSprite(),self.__player.getCoordinates())
 
     def showGameHealth(self,frames:int,updates:int)->None:
         pgm.display.set_caption(f"Shump Game || fps :{frames} | ups : {updates} ||")
@@ -108,7 +111,9 @@ class Game:
         """Checks the ID and then does the event handling"""
         if(self.__state.getID()==HOME):self.eventsForHome()
         elif(self.__state.getID() ==MENU ): self.eventsForMenu()
-        elif(self.__state.getID() == GAMEPLAY):self.eventsforPlay()
+        elif(self.__state.getID() == GAMEPLAY):
+            self.eventsforPlay()
+            self.__player.updates()
         elif(self.__state.getID() == CHAR_SELECTION):self.eventsForCharacterSelection()
         elif(self.__state.getID()==404): self.eventsForDummy()
 
@@ -190,7 +195,7 @@ class Game:
                             self.__state.resetChoice()
                         else:
                             self.changeState(play(characterA((623-48)/2,696-100,5,pgm.image.load("Assets/Player/Hitbox.png"))))
-                    
+                            self.__player=self.__state.getPlayer()
                         
                 if(event.type == pgm.KEYUP):...
                 
@@ -240,10 +245,10 @@ class Game:
                     print(DEBUG_STR+"down")
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
-                    self.__player.__Up=False
+                    self.__player.__Right=False
                     print(DEBUG_STR+"right")
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
-                    self.__player.__Down=False
+                    self.__player.__Left=False
                     print(DEBUG_STR+"Left")
 
     #__depricate

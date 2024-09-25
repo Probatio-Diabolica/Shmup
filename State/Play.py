@@ -2,7 +2,8 @@ from State import baseWindow
 from pygame import Surface,image
 from typing import final
 from .stateConf import HUD
-from Entity import characterA,MC
+# from Entity import characterA
+from Entity.playables import MC
 
 
 
@@ -28,6 +29,7 @@ class play(baseWindow):
         * 5 -> stage 5
         * 6 -> stage 6
         * 7 -> extra stage
+        
     """
     __Right     : bool      = False
     __Left      : bool      = False
@@ -35,7 +37,8 @@ class play(baseWindow):
     __Down      : bool      = False
     __Score     : int       = 0
     __HighScore : int       # import from high score
-
+    
+    @final
     def getPlayer(self)->MC:
         return self._Player
     

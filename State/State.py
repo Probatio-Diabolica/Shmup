@@ -6,7 +6,7 @@ from typing import final
 import pygame as pgm
 from functools import cache
 
-from Entity.Entity import MC
+from Entity.playables import MC
 
 HOME=1
 MENU=2
