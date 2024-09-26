@@ -20,7 +20,7 @@ if __name__== "__main__":
 # !! Issue: The main reason why player is not moving is because player in game and player in play are not connected yet 
 # todo: fix this as well 
 # multi
-# resolve:  
+# resolve:  solved by implementing it back
 
 
 #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
