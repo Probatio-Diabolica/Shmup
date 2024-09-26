@@ -14,7 +14,7 @@ if __name__== "__main__":
 # Added FPS and UPS counter
 #  Add difficulty picking
 #  Home text animations
-
+# fixed the player along with movements 
 #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # !! Issue: The main reason why player is not moving is because player in game and player in play are not connected yet 
@@ -38,7 +38,6 @@ if __name__== "__main__":
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 # TODO: Scale down the player
-# TODO: FIX the player along with movements 
 # TODO: with bullets
 # TODO: Stage 1
 # TODO: Stage 2
