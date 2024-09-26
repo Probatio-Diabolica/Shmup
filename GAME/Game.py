@@ -222,17 +222,15 @@ class Game:
             if(event.type ==pgm.KEYDOWN):
                 if(event.key==pgm.K_UP or event.key==pgm.K_KP_8):
                     self.__player.toggleUp()
-                    print(DEBUG_STR+"up")
+                    
                 elif(event.key==pgm.K_DOWN or event.key==pgm.K_KP_2):
                     self.__player.toggleDown()
-                    print(DEBUG_STR+"down")
+                    \
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
                     self.__player.toggleRight()
-                    print(DEBUG_STR+"right")
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
                     self.__player.toggleLeft()
-                    print(DEBUG_STR+"Left")
                 elif(event.key==pgm.K_ESCAPE or event.key==pgm.K_x):...
                     # print(DEBUG_STR+"up")
                     # self.changeState(menu())
@@ -240,17 +238,13 @@ class Game:
             if(event.type == pgm.KEYUP):
                 if(event.key==pgm.K_UP or event.key==pgm.K_KP_8):
                     self.__player.toggleUp()
-                    print(DEBUG_STR+"up")
                 elif(event.key==pgm.K_DOWN or event.key==pgm.K_KP_2):
                     self.__player.toggleDown()
-                    print(DEBUG_STR+"down")
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
                     self.__player.toggleRight()
-                    print(DEBUG_STR+"right")
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
                     self.__player.toggleLeft()
-                    print(DEBUG_STR+"Left")
 
     #__depricate
     def WindowIsOpen(self)->bool:
