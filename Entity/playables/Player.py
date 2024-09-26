@@ -4,7 +4,9 @@ from .basePlayer import MC
 
 class characterA(MC):
     def __init__(self, x: float, y: float, spd: float, surface: Surface )-> None:
-        super().__init__(x, y, spd, surface,48,623)
+        # super().__init__(x, y, spd, surface,48,623)
+        super().__init__(x, y, spd, surface)
+
         # self.__bulletType=playerBullet(self.getCoordinates(),20,img.load("Assets/Bullets/playerB/one.png"),20)
         self.__fireRate=90
 

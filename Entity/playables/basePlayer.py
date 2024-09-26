@@ -147,12 +147,12 @@ class MC:
         self.__Ypos+=y
     
     def playerMove(self)->None:
-        if(self.__Left and self.getX()>self.__xLimL-2):
+        if(self.__Left and self.getX()>self.__xLimL+3):
             self.Move(-1*(self.__speed),0)
-        if(self.__Right and self.getX()<self.__xLimR):
+        if(self.__Right and self.getX()<self.__xLimR-12):
             self.Move(self.__speed,0)
-        if(self.__Up and self.getY()>self.__yLimU-3):
+        if(self.__Up and self.getY()>self.__yLimU+3):
             self.Move(0,-1*(self.__speed))
-        if(self.__Down and self.getY()<self.__yLimD):
+        if(self.__Down and self.getY()<self.__yLimD-12):
             self.Move(0,self.__speed)
     

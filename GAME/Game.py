@@ -35,7 +35,7 @@ class Game:
         pgm.init()
         global INST
         INST=self
-        self.__player     :  MC 
+        self.__player     = None 
         self.__state=state #the state or screen we are in
         self.__running=True #running 
         self.__background=state.getBackground() # background of the window
