@@ -100,9 +100,10 @@ class Game:
         self.__state.render(self.__screen)
 
     def renderStage(self)->None:
-        pgm.display.update() #!!most imp line don't forget it        
+        self.__screen.fill((0,0,0,))
         self.__state.render(self.__screen)
         self.__screen.blit(self.__player.getSprite(),self.__player.getCoordinates())
+        pgm.display.update() #!!most imp line don't forget it 
 
     def showGameHealth(self,frames:int,updates:int)->None:
         pgm.display.set_caption(f"Shump Game || fps :{frames} | ups : {updates} ||")
