@@ -15,21 +15,9 @@ if __name__== "__main__":
 #  Add difficulty picking
 #  Home text animations
 # fixed the player along with movements 
-#////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-# !! Issue: The main reason why player is not moving is because player in game and player in play are not connected yet 
-# todo: fix this as well 
-# multi
-# resolve:  solved by filling the back with black background
-
-
-#////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 
 #//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# !! solved
 # BruteForce this:
 # Multi: we can achieve the same through play_CLASS and CharEvent()_METHOD 
 
@@ -37,6 +25,8 @@ if __name__== "__main__":
 # todo : play_CLASS 
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+# TODO: Time events
+# TODO: Enemy insertion in the play
 # TODO: Scale down the player
 # TODO: with bullets
 # TODO: Stage 1
@@ -59,3 +49,31 @@ if __name__== "__main__":
 #!! Optimize: Play state (that shit is getting 80 fps when charging, and half when not).
 #!! Optimize: Implementation of Buffer strategy
 #!! optimize: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# note: to @self
+# !! Issue: The main reason why player is not moving is because player in game and player in play are not connected yet 
+# todo: fix this as well 
+# multi
+# resolve:  solved by filling the back with black background
+#////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -20,14 +20,12 @@ class baseWindow:
     _fontRect:Rect
     _choice:int
     _choiceLR:int               =0
-    _startTime:float
-    _currentTime:float 
     _background :Surface
     _page:int                   =0
     def __init__(self,Background:Surface,value:int=0) -> None:
         self._background = Background
-        self._startTime = time.time()
-        
+        self._startTime:float   
+        self._currentTime:float
     
     def updates(self) -> None:...
 
@@ -89,7 +87,7 @@ class baseWindow:
         return round(self._currentTime-self._startTime,2)
     
     @final
-    def getRealElapsedTime(self)->float:
+    def getRawElapsedTime(self)->float:
         return self._currentTime-self._startTime
     
     @final

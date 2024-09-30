@@ -1,5 +1,6 @@
 from State import baseWindow
 from pygame import Surface,image
+from time import time_ns
 from typing import final
 from .stateConf import HUD
 # from Entity import characterA
@@ -14,12 +15,10 @@ class play(baseWindow):
     playing space   
     x= 48 |  48 | 623 | 623 \n
     y= 25 | 696 | 696 |  25
-
     note: make sure to minus the sprite lenght from this playing space
     """
     _ID         : int       = 100
     __stageID   : int       = 0
-
     _Player     : MC
     """
         * 1 -> stage 1
@@ -46,14 +45,16 @@ class play(baseWindow):
         super().__init__(Background, value)
         # self._Player=characterA((623-48)/2,696-100,5,image.load("Assets/Player/Hitbox.png"))
         self._Player=player        
+        self._startTime = time_ns()
+        self.__possibleEnemy =0
 
 
     def changeStage(self,screen:Surface,stageID:int,practice:bool=False)-> None:
+        self._startTime=time_ns()
         change:bool
         self.__stageID=stageID
         if(practice): change=False
         else: change = True
-
         if(self.__stageID==1):
             self.Stage1(screen,change)
         elif(self.__stageID==2):
@@ -72,7 +73,11 @@ class play(baseWindow):
 
 
     #!! if change is "True", then it means we are actually playing not practicing. 
-    def Stage1(self,screen:Surface,change:bool=False)->None:...
+    def Stage1(self,screen:Surface,change:bool=False)->None:
+        self._currentTime = time_ns()
+        if(self.getElapsedTime()>1 and self.__possibleEnemy<5):
+            # spawn 5 enemies
+            ...
     def Stage2(self,screen:Surface,change:bool=False)->None:...
     def Stage3(self,screen:Surface,change:bool=False)->None:...
     def Stage4(self,screen:Surface,change:bool=False)->None:...

@@ -187,7 +187,6 @@ class Game:
                         elif(event.key==pgm.K_ESCAPE or event.key==pgm.K_x): 
                             self.__state._page=-1 
                         
-
                     if(event.key==pgm.K_z):
                         if(self.__state.getPage()==-1):
                             print("difficulty chosen[GAME.py]")
@@ -225,7 +224,6 @@ class Game:
                     
                 elif(event.key==pgm.K_DOWN or event.key==pgm.K_KP_2):
                     self.__player.toggleDown()
-                    \
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
                     self.__player.toggleRight()
