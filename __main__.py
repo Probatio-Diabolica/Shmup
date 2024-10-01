@@ -46,15 +46,16 @@ if __name__== "__main__":
 # TODO: Character substate in Menu state 
 
 
+#----------------------------------------------------------------------------------------------------
 #!! Optimize: Play state (that shit is getting 80 fps when charging, and half when not).
-#!! Optimize: Implementation of Buffer strategy
-#!! optimize: 
+# !! update: yeah somehow that this is still giving 90fs even when not charging.
+# !! this implies that somewhere in the delta time , the issue lies.
 
+#---------------------------------------------------------------------------------------------------
+#!! Optimize: Implementation of Buffer 
 
-
-
-
-
+#-----------------------------------------------------------------------------------------------------
+#!! optimize : the enemy module
 
 
 

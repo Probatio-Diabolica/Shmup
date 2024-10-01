@@ -55,10 +55,5 @@ def run():
 
 
 
-
-
-
-
-
-if __name__=="__main__":
+if __name__=="stage1":
     run()
