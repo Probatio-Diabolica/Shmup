@@ -52,14 +52,14 @@ class bullet(Entity):
     def __init__(self, x: float, y: float, spd: float, s: Surface,firerate:int) -> None:
         super().__init__(x, y, spd, s)
         self._FireRate=firerate
-    
+
 
 class Enemy(Entity):
     __fireRate:int=100
     __bullet:list=[]
     __Hp:int
-    def __init__(self, x: float, y: float, spd: float, s: Surface,hp:int) -> None:
-        super().__init__(x, y, spd, s)
+    def __init__(self, x: float, y: float, spd: float,path:tuple, surface: Surface,hp:int,rep:bool=False) -> None:
+        super().__init__(x, y, spd, surface)
         self.__Hp=hp
     
     def Collision(self,p:bullet)->bool:

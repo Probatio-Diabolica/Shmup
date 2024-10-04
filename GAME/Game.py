@@ -2,14 +2,12 @@ from .gameConf import gameHeight,gameWidth
 from State.State import baseWindow,home,menu,dummyState,msgPair
 from State.Play import play
 from State.CharacterSelection import Character
-from Entity.Entity import Entity
-from Entity.playables import MC
+# from Entity.Entity import Entity
+# from Entity.playables import MC
 from Entity.playables.Player import characterA
-from State.stateConf import CHAR_B_TEST,BLACK_BG
+# from State.stateConf import CHAR_B_TEST,BLACK_BG
 import pygame as pgm
 import time
-import threading
-import asyncio 
 INST = None
 
 HOME=1
@@ -45,10 +43,7 @@ class Game:
         pgm.display.set_caption(f"Shump Game || fps :{120} | ups : {0} ||")
         self.__screen.blit(self.__background,(0,0))
         self.__state.pageAnim(self.__screen)
-        num_threads=5
-        self.RenderThread=[threading.Thread(target=self.render) for i in range(num_threads)]
-        for thread in self.RenderThread:
-            thread.start()
+        
 
     
     def changeState(self,state:baseWindow) -> None :
@@ -102,7 +97,7 @@ class Game:
     def renderStage(self)->None:
         self.__screen.fill((0,0,0,))
         self.__state.render(self.__screen)
-        self.__screen.blit(self.__player.getSprite(),self.__player.getCoordinates())
+        self.__screen.blit(self.__player.getSprite(),self.__player.getCoordinates()) #type:ignore
         pgm.display.update() #!!most imp line don't forget it 
 
     def showGameHealth(self,frames:int,updates:int)->None:
@@ -114,7 +109,7 @@ class Game:
         elif(self.__state.getID() ==MENU ): self.eventsForMenu()
         elif(self.__state.getID() == GAMEPLAY):
             self.eventsforPlay()
-            self.__player.updates()
+            self.__player.updates()#type:ignore
         elif(self.__state.getID() == CHAR_SELECTION):self.eventsForCharacterSelection()
         elif(self.__state.getID()==404): self.eventsForDummy()
 
@@ -220,36 +215,35 @@ class Game:
 
             if(event.type ==pgm.KEYDOWN):
                 if(event.key==pgm.K_UP or event.key==pgm.K_KP_8):
-                    self.__player.toggleUp()
+                    self.__player.toggleUp() #type:ignore
                     
                 elif(event.key==pgm.K_DOWN or event.key==pgm.K_KP_2):
-                    self.__player.toggleDown()
+                    self.__player.toggleDown()#type:ignore
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
-                    self.__player.toggleRight()
+                    self.__player.toggleRight() #type:ignore
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
-                    self.__player.toggleLeft()
-                elif(event.key==pgm.K_ESCAPE or event.key==pgm.K_x):...
+                    self.__player.toggleLeft() #type:ignore
+                elif(event.key==pgm.K_ESCAPE or event.key==pgm.K_x):
+                    self.__running=False
                     # print(DEBUG_STR+"up")
                     # self.changeState(menu())
 
             if(event.type == pgm.KEYUP):
                 if(event.key==pgm.K_UP or event.key==pgm.K_KP_8):
-                    self.__player.toggleUp()
+                    self.__player.toggleUp() #type:ignore
                 elif(event.key==pgm.K_DOWN or event.key==pgm.K_KP_2):
-                    self.__player.toggleDown()
+                    self.__player.toggleDown() #type:ignore
                     # self.__state.choiceChange(factorUD=1,choices=4)
                 elif(event.key==pgm.K_RIGHT or event.key==pgm.K_KP_6):
-                    self.__player.toggleRight()
+                    self.__player.toggleRight() #type:ignore
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
-                    self.__player.toggleLeft()
+                    self.__player.toggleLeft() # type: ignore
 
     #__depricate
     def WindowIsOpen(self)->bool:
         return self.__running
 
     def closeGame(self)->None:
-        for thread in self.RenderThread:
-            thread.join()
         pgm.quit()
         

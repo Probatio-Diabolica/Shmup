@@ -1,12 +1,12 @@
 import pygame as pgm
 import time
 from Entity.playables import MC
-from Entity.Enemies import Dragon
+from Entity.Enemies import e1
 player = MC(100,100,0.06,pgm.image.load("Assets/Player/Hitbox.png"),xlimL=0,xLimR=390,yLimU=0,yLimD=390)
-Enemy=Dragon(0,0,0.2)
+Enemy=e1(x=170,y=20,spd=0.2,pathway=((10,20),(20,30),(20,30),(4,40)),repeat=False)
 DEBUG_STR="Worked @ [Game.py]"
 
-    
+
 
 def run():
     pgm.init()  
@@ -53,7 +53,5 @@ def run():
                 elif(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
                     player.toggleLeft()
 
+run()
 
-
-if __name__=="stage1":
-    run()
