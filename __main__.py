@@ -25,6 +25,7 @@ if __name__== "__main__":
 # todo : play_CLASS 
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+# TODO: Make list of states so that we can manage our efficiency
 # TODO: Time events
 # TODO: Enemy insertion in the play
 # TODO: Scale down the player

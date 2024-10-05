@@ -17,6 +17,7 @@ OPTIONS=22
 GAMEPLAY=100
 CHAR_SELECTION=21
 
+
 # ---------------------------------------------------------------------------------------------------------------------------------------
 DEBUG_STR="Worked @ [Game.py]"
 # Code needs heavy optimization here, also objects that are not annoted by self are static by default
@@ -41,6 +42,12 @@ class Game:
         self.__screen=pgm.display.set_mode((self.__width,self.__height)) # "flags=pgm.FULLSCREEN"  ,also :set_mode = (W,H) 
         pgm.mouse.set_visible(False)
         pgm.display.set_caption(f"Shump Game || fps :{120} | ups : {0} ||")
+        
+        self.home = home()
+        self.menu = menu()
+        self.char = Character()
+        self.play= play(self.__player)
+        self.__stateList={self.home.getID:self.home , self.menu.getID():self.menu,self.char.getID():self.char,self.play.getID():self.play}
         self.__screen.blit(self.__background,(0,0))
         self.__state.pageAnim(self.__screen)
         
@@ -82,13 +89,10 @@ class Game:
         # if loop ends 
         self.closeGame()
 
-
-
-
     def update(self)->None:
         self.events()
-        self.__state.updates()
-        
+        self.__state.updates() 
+        print("TEST @ UPDATE/GAME.PY current state :",self.__state.getID())       
         
     def render(self)->None:
         pgm.display.update() #!!most imp line don't forget it        
@@ -137,7 +141,7 @@ class Game:
                     
                     # Start
                     if(self.__state.getChoice()==0):
-                        self.changeState(Character()) #<-later
+                        self.changeState(self.char) #<-later
                         # self.changeState(play())
                     
                     # Practice
@@ -171,7 +175,7 @@ class Game:
                             self.__state.choiceChange(factorUD=1,choices=4)
                         
                         elif(event.key==pgm.K_ESCAPE or event.key==pgm.K_x): 
-                            self.changeState(menu())
+                            self.changeState(self.menu)
                     else:
                         if(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
                             self.__state.changePage(direction=-1)

@@ -61,6 +61,7 @@ class Enemy(Entity):
     def __init__(self, x: float, y: float, spd: float,path:tuple, surface: Surface,hp:int,rep:bool=False) -> None:
         super().__init__(x, y, spd, surface)
         self.__Hp=hp
+        self.__pathVar:int=0
     
     def Collision(self,p:bullet)->bool:
         distance=math.sqrt(math.pow(p.getX()-self.__Xpos,2)+ math.pow(p.getY()-self.__Ypos,2))
@@ -73,9 +74,11 @@ class Enemy(Entity):
     def death(self)->None:
         if(self.__Hp==0): self.destroy()
 
-    def Move(self,x:float=0,y:float=0)->None:
-        self.__Xpos+=x
-        self.__Ypos+=y
+    def Move(self)->None:
+        match self.__pathVar:
+            case 0:
+                ...
+
     
     def update(self,p:bullet)->None:
         self.Collision(p)

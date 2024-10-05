@@ -42,7 +42,7 @@ class baseWindow:
     def getPlayer(self)->MC:...
 
     def render(self, screen: Surface) -> None:
-        screen.blit(self._background,(0,0))
+        # screen.blit(self._background,(0,0))
         self.renderActivity(screen)
         self.renderUI(screen)
         pgm.display.update()
@@ -153,7 +153,6 @@ class menu(baseWindow):
                 This has the achitecture of :                       \n.
                 page No > Choice > renderText(Where ?, Message ?,Message's Location , Color (if selected) ).
             """
-
             #PLAY
             if(self._choice==0):
                 self.__tPlay.changeColor(black)

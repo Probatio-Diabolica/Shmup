@@ -6,19 +6,19 @@ player = MC(100,100,0.06,pgm.image.load("Assets/Player/Hitbox.png"),xlimL=0,xLim
 Enemy=e1(x=170,y=20,spd=0.2,pathway=((10,20),(20,30),(20,30),(4,40)),repeat=False)
 DEBUG_STR="Worked @ [Game.py]"
 
+interim=0 
 
-
+def enem_update():...
+    # global interim
+    # if(interim==0):
 def run():
     pgm.init()  
     blue=(0,110,255)
     X = 400
     Y = 400
     running=True
-    screen = pgm.display.set_mode((X, Y )) 
-
+    screen = pgm.display.set_mode((X, Y ))
     pgm.display.set_caption('STAGE 1 TEST')
-
-
     while running : 
         screen.fill(blue) 
         player.updates()
