@@ -18,6 +18,7 @@ class Character(baseWindow):
     __player    : int        =   0   
     def __init__(self, Background: Surface = image.load(homeTestPath), value: int = 0) -> None:
         print("<Char class> [Loc: in State module] ID = ", self._ID)
+        self.backgroundt=image.load(homeTestPath)
         super().__init__(Background, value)
 
     def getPage(self) -> int:
@@ -33,7 +34,7 @@ class Character(baseWindow):
             
     def renderActivity(self, screen: Surface) -> None:    
         if(self._page==-1):
-            self.changeBackground(image.load(homeTestPath))
+            self.changeBackground(self.backgroundt)
             
             if(self._choice==0):
                 screen.blit(HEADER,(250,0))
@@ -60,12 +61,12 @@ class Character(baseWindow):
                 screen.blit(HARD_LOW,(230,360))
                 screen.blit(LUNATIC,(230,490))   
         if(self._page==0): #choice 1
-            self.changeBackground(image.load(CHAR_A))
+            self.changeBackground(image.load(CHAR_A).convert())
             self.__player=0
             if(self._choice==0):...
             else:...
         else:#choice 2
-            self.changeBackground(image.load(CHAR_B_TEST))
+            self.changeBackground(image.load(CHAR_B_TEST).convert())
             self.__player   = 1
 
     @final

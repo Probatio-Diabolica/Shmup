@@ -47,7 +47,7 @@ class Game:
         self.menu = menu()
         self.char = Character()
         self.play= play(self.__player)
-        self.__stateList={self.home.getID:self.home , self.menu.getID():self.menu,self.char.getID():self.char,self.play.getID():self.play}
+        self.__stateDist={self.home.getID:self.home , self.menu.getID():self.menu,self.char.getID():self.char,self.play.getID():self.play}
         self.__screen.blit(self.__background,(0,0))
         self.__state.pageAnim(self.__screen)
         
@@ -92,7 +92,7 @@ class Game:
     def update(self)->None:
         self.events()
         self.__state.updates() 
-        print("TEST @ UPDATE/GAME.PY current state :",self.__state.getID())       
+        # print("TEST @ UPDATE/GAME.PY current state :",self.__state.getID())       
         
     def render(self)->None:
         pgm.display.update() #!!most imp line don't forget it        

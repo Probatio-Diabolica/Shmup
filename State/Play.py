@@ -44,9 +44,10 @@ class play(baseWindow):
     def __init__(self,player ,Background: Surface = image.load(HUD), value: int = 0) -> None:
         super().__init__(Background, value)
         # self._Player=characterA((623-48)/2,696-100,5,image.load("Assets/Player/Hitbox.png"))
-        self._Player=player        
+        self._Player=player
         self._startTime = time_ns()
         self.__possibleEnemy =0
+        self._background=Background.convert()
 
 
     def changeStage(self,screen:Surface,stageID:int,practice:bool=False)-> None:
@@ -86,7 +87,8 @@ class play(baseWindow):
     def StageEX(self,screen:Surface)->None:...
 
     def renderActivity(self, screen: Surface) -> None:
-        screen.blit(self._Player.getSprite(),self._Player.getCoordinates())
+        screen.blit(self._Player.getSprite().convert(),self._Player.getCoordinates())
+        screen.blit(self._background,(0,0))
         # self.Stage1(screen)
         # self.Stage2(screen)
         # self.Stage3(screen)
