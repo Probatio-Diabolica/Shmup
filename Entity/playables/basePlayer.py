@@ -105,7 +105,7 @@ class MC:
         self.__Ypos         :float      =   y
         self.__Lives        :int        =   3
         self.__speed        :float      =   spd
-        self.__sprite       :Surface    =   surface
+        self.__sprite       :Surface    =   surface.convert()
         self.__xLimL        :float      =   xlimL
         self.__xLimR        :float      =   xLimR
         self.__yLimU        :float      =   yLimU   

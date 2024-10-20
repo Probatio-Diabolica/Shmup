@@ -34,10 +34,9 @@ class Game:
         pgm.init()
         global INST
         INST=self
-        self.__player     = None 
-        self.__state=state #the state or screen we are in
+        self.__player=None
         self.__running=True #running 
-        self.__background=state.getBackground() # background of the window
+
         # self.__screen=pgm.display.set_mode((self.__width,self.__height),flags=pgm.FULLSCREEN) # "flags=pgm.FULLSCREEN"  ,also :set_mode = (W,H) 
         self.__screen=pgm.display.set_mode((self.__width,self.__height)) # "flags=pgm.FULLSCREEN"  ,also :set_mode = (W,H) 
         pgm.mouse.set_visible(False)
@@ -47,7 +46,11 @@ class Game:
         self.menu = menu()
         self.char = Character()
         self.play= play(self.__player)
-        self.__stateDist={self.home.getID:self.home , self.menu.getID():self.menu,self.char.getID():self.char,self.play.getID():self.play}
+        self.__stateDist={self.home.getID():self.home , self.menu.getID():self.menu,self.char.getID():self.char,self.play.getID():self.play}
+        
+        self.__state=self.__stateDist[HOME]
+        self.__state=state #the state or screen we are in
+        self.__background=state.getBackground() # background of the window
         self.__screen.blit(self.__background,(0,0))
         self.__state.pageAnim(self.__screen)
         
@@ -123,7 +126,7 @@ class Game:
             if event.type == pgm.QUIT: self.__running=False
             if event.type ==pgm.KEYDOWN:
                 if(event.key==pgm.K_z or event.key==pgm.K_SPACE):  
-                    self.changeState(menu())
+                    self.changeState(self.__stateDist[MENU])
 
     def eventsForMenu(self) -> None:
         """Events at menu screen"""
@@ -141,7 +144,7 @@ class Game:
                     
                     # Start
                     if(self.__state.getChoice()==0):
-                        self.changeState(self.char) #<-later
+                        self.changeState(self.__stateDist[CHAR_SELECTION]) #<-later
                         # self.changeState(play())
                     
                     # Practice
@@ -160,7 +163,7 @@ class Game:
                     elif(self.__state.getChoice()==4):
                         self.__running=False
                 if(event.key==pgm.K_ESCAPE) or (event.key==pgm.K_x) :  
-                    self.changeState(home())
+                    self.changeState(self.__stateDist[HOME])
             elif event.type == pgm.QUIT: self.__running=False
 
     def eventsForCharacterSelection(self) -> None:

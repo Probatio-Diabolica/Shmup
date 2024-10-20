@@ -5,9 +5,11 @@ from Scripts import getDialog
 from typing import final
 from .stateConf import menuTestPath,homeTestPath,BLACK_BG,CHAR_B_TEST,difficultyPath,CHAR_A
 from .UI_Panels import HEADER,EASY,NORMAL,HARD,LUNATIC,EASY_LOW,NORMAL_LOW,HARD_LOW,LUNATIC_LOW
-import numpy as np
-from random import randrange
+# import numpy as np
+# from random import randrange
 
+
+# !! char select is now the most unoptimized part
 @final
 class Character(baseWindow):
     _ID=21
@@ -17,7 +19,9 @@ class Character(baseWindow):
     _page       : int        =   -1
     __player    : int        =   0   
     def __init__(self, Background: Surface = image.load(homeTestPath), value: int = 0) -> None:
+        # !! fix one
         print("<Char class> [Loc: in State module] ID = ", self._ID)
+        self.backgrounds={-1:"home",0:"char A", 1:"char 2"}
         self.backgroundt=image.load(homeTestPath)
         super().__init__(Background, value)
 
@@ -34,7 +38,7 @@ class Character(baseWindow):
             
     def renderActivity(self, screen: Surface) -> None:    
         if(self._page==-1):
-            self.changeBackground(self.backgroundt)
+            self.changeBackground(self.backgroundt.convert())
             
             if(self._choice==0):
                 screen.blit(HEADER,(250,0))

@@ -12,7 +12,7 @@ def enem_update():...
     # global interim
     # if(interim==0):
 def run():
-    pgm.init()  
+    pgm.init()   
     blue=(0,110,255)
     X = 400
     Y = 400

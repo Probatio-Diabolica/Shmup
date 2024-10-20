@@ -44,7 +44,7 @@ class play(baseWindow):
     def __init__(self,player ,Background: Surface = image.load(HUD), value: int = 0) -> None:
         super().__init__(Background, value)
         # self._Player=characterA((623-48)/2,696-100,5,image.load("Assets/Player/Hitbox.png"))
-        self._Player=player
+        self._Player=player # type: ignore
         self._startTime = time_ns()
         self.__possibleEnemy =0
         self._background=Background.convert()

@@ -20,11 +20,12 @@ if __name__== "__main__":
 # !! solved
 # BruteForce this:
 # Multi: we can achieve the same through play_CLASS and CharEvent()_METHOD 
-
-# Ongoing: Char_event
-# todo : play_CLASS 
+#//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# Ongoing: Enemies to the play
+# todo : play_CLASS  
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+# TODO: FIX THE char_select performance issue
 # TODO: Make list of states so that we can manage our efficiency
 # TODO: Time events
 # TODO: Enemy insertion in the play

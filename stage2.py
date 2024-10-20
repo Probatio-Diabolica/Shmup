@@ -6,7 +6,7 @@ pygame.init()
 
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Square Shooter with Homing Bullets")
+pygame.display.set_caption("Homing Bullet Test_1")
 
 
 WHITE = (255, 255, 255)
