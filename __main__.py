@@ -49,10 +49,11 @@ if __name__== "__main__":
 
 
 #----------------------------------------------------------------------------------------------------
-#!! Optimize: Play state (that shit is getting 80 fps when charging, and half when not).
+#!! Optimize: char state (that shit is getting 100fps only).
 # !! update: yeah somehow that this is still giving 90fs even when not charging.
 # !! this implies that somewhere in the delta time , the issue lies.
 
+#!! fixed this issue 
 #---------------------------------------------------------------------------------------------------
 #!! Optimize: Implementation of Buffer 
 
@@ -61,22 +62,3 @@ if __name__== "__main__":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-#////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-# note: to @self
-# !! Issue: The main reason why player is not moving is because player in game and player in play are not connected yet 
-# todo: fix this as well 
-# multi
-# resolve:  solved by filling the back with black background
-#////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -18,6 +18,7 @@ GAMEPLAY=100
 CHAR_SELECTION=21
 
 
+
 # ---------------------------------------------------------------------------------------------------------------------------------------
 DEBUG_STR="Worked @ [Game.py]"
 # Code needs heavy optimization here, also objects that are not annoted by self are static by default
@@ -28,9 +29,12 @@ class Game:
     __height     :  int           = gameHeight
     __width      :  int           = gameWidth
     __screen     :  pgm.Surface
+    # note: temp vars
+    high                          = 0
+    low                           = 1000
     
     # __MC         :  Player              
-    def __init__(self,state:baseWindow=home()) -> None:
+    def __init__(self) -> None:
         pgm.init()
         global INST
         INST=self
@@ -49,8 +53,8 @@ class Game:
         self.__stateDist={self.home.getID():self.home , self.menu.getID():self.menu,self.char.getID():self.char,self.play.getID():self.play}
         
         self.__state=self.__stateDist[HOME]
-        self.__state=state #the state or screen we are in
-        self.__background=state.getBackground() # background of the window
+        # self.__state=state #the state or screen we are in
+        self.__background=self.__state.getBackground() # background of the window
         self.__screen.blit(self.__background,(0,0))
         self.__state.pageAnim(self.__screen)
         
@@ -86,6 +90,8 @@ class Game:
 
             if(int(time.time_ns()/1000000) - __timer>1000):
                 __timer+=1000
+                if(__frames>self.high): self.high = __frames
+                if(__frames<self.low): self.low   = __frames
                 self.showGameHealth(__frames,__updates)
                 __frames=0
                 __updates=0
@@ -108,7 +114,7 @@ class Game:
         pgm.display.update() #!!most imp line don't forget it 
 
     def showGameHealth(self,frames:int,updates:int)->None:
-        pgm.display.set_caption(f"Shump Game || fps :{frames} | ups : {updates} ||")
+        pgm.display.set_caption(f"Shump Game || fps :{frames} | ups : {updates} || heightFPS {self.high} | lowest fps {self.low}")
 
     def events(self)->None:
         """Checks the ID and then does the event handling"""
