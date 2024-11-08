@@ -29,9 +29,11 @@ class Game:
     __height     :  int           = gameHeight
     __width      :  int           = gameWidth
     __screen     :  pgm.Surface
-    # note: temp vars
-    high                          = 0
-    low                           = 1000
+    #//////////////////////////////////////////////////////////////////////////////////
+    # note: temp vars                                       #//////////////////////////
+    high                          = 0                    #/////////////////////////////
+    low                           = 1000              #////////////////////////////////
+    #//////////////////////////////////////////////////////////////////////////////////
     
     # __MC         :  Player              
     def __init__(self) -> None:
@@ -118,6 +120,7 @@ class Game:
 
     def events(self)->None:
         """Checks the ID and then does the event handling"""
+        # print(f" state == {self.__state.getID()}")
         if(self.__state.getID()==HOME):self.eventsForHome()
         elif(self.__state.getID() ==MENU ): self.eventsForMenu()
         elif(self.__state.getID() == GAMEPLAY):
@@ -186,6 +189,7 @@ class Game:
                         elif(event.key==pgm.K_ESCAPE or event.key==pgm.K_x): 
                             self.changeState(self.menu)
                     else:
+                        print(self.__state.getPage())
                         if(event.key==pgm.K_LEFT or event.key==pgm.K_KP_4):
                             self.__state.changePage(direction=-1)
                         

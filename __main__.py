@@ -1,7 +1,7 @@
 from GAME import Game
 
 if __name__== "__main__":
-    game = Game()
+    game:Game = Game()
 
     # while(game.WindowIsOpen()):
     game.run()

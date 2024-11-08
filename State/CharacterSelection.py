@@ -5,6 +5,7 @@ from Scripts import getDialog
 from typing import final
 from .stateConf import menuTestPath,homeTestPath,BLACK_BG,CHAR_B_TEST,difficultyPath,CHAR_A
 from .UI_Panels import HEADER,EASY,NORMAL,HARD,LUNATIC,EASY_LOW,NORMAL_LOW,HARD_LOW,LUNATIC_LOW
+import pygame as pgm
 # import numpy as np
 # from random import randrange
 TOP=1
@@ -28,7 +29,24 @@ class Character(baseWindow):
     __player    : int        =   0   
     def __init__(self, Background: Surface = image.load(homeTestPath), value: int = 0) -> None:
         # !! fix one
-        self.__UI_panels={TOP:HEADER.convert_alpha(),EZ:EASY.convert(),EZ_T:EASY_LOW.convert_alpha(),N:NORMAL.convert(),N_T:NORMAL_LOW.convert_alpha(),H:HARD.convert(),H_T:HARD_LOW.convert_alpha(),L:LUNATIC.convert(),L_T:LUNATIC_LOW.convert_alpha()}
+        
+        self.__BG = {
+            -1  :   Background.convert(),
+            0   :   image.load(CHAR_A).convert(),
+            1   :   image.load(CHAR_B_TEST).convert()
+            }
+        
+        self.__UI_panels={
+            TOP     :   HEADER.convert_alpha(),
+            EZ      :   EASY.convert(),
+            EZ_T    :   EASY_LOW.convert_alpha(),
+            N       :   NORMAL.convert(),
+            N_T     :   NORMAL_LOW.convert_alpha(),
+            H       :   HARD.convert(),
+            H_T     :   HARD_LOW.convert_alpha(),
+            L       :   LUNATIC.convert(),
+            L_T     :   LUNATIC_LOW.convert_alpha()
+            }
         print("<Char class> [Loc: in State module] ID = ", self._ID)
         self.backgrounds={-1:"home",0:"char A", 1:"char 2"}
         self.backgroundt=image.load(homeTestPath)
@@ -47,8 +65,8 @@ class Character(baseWindow):
             
     def renderActivity(self, screen: Surface) -> None:    
         if(self._page==-1):
-            self.changeBackground(self.backgroundt.convert())
-            
+            # self.changeBackground(self.__BG[-1])
+            screen.blit(self.__BG[-1],(0,0))
             if(self._choice==0):
                 screen.blit(self.__UI_panels[TOP],   (250,0))
                 screen.blit(self.__UI_panels[EZ],   (230,90))
@@ -74,13 +92,18 @@ class Character(baseWindow):
                 screen.blit(self.__UI_panels[H_T],(230,360))
                 screen.blit(self.__UI_panels[L],(230,490))   
         if(self._page==0): #choice 1
-            self.changeBackground(image.load(CHAR_A).convert())
+            screen.fill((0,0,0))
+            # self.changeBackground(self.__BG[0])
+            screen.blit(self.__BG[0],(0,0))
             self.__player=0
             if(self._choice==0):...
             else:...
         else:#choice 2
-            self.changeBackground(image.load(CHAR_B_TEST).convert())
+            # self.changeBackground(self.__BG[1])
+            screen.blit(self.__BG[1],(0,0))
             self.__player   = 1
+        pgm.display.update()
+        
 
     @final
     def getPlayer(self) ->  int:
