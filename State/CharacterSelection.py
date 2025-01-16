@@ -6,8 +6,7 @@ from typing import final
 from .stateConf import menuTestPath,homeTestPath,BLACK_BG,CHAR_B_TEST,difficultyPath,CHAR_A
 from .UI_Panels import HEADER,EASY,NORMAL,HARD,LUNATIC,EASY_LOW,NORMAL_LOW,HARD_LOW,LUNATIC_LOW
 import pygame as pgm
-# import numpy as np
-# from random import randrange
+
 TOP=1
 EZ=11
 EZ_T=12
@@ -27,9 +26,7 @@ class Character(baseWindow):
     __netPages  : int        =   2
     _page       : int        =   -1
     __player    : int        =   0   
-    def __init__(self, Background: Surface = image.load(homeTestPath), value: int = 0) -> None:
-        # !! fix one
-        
+    def __init__(self, Background: Surface = image.load(menuTestPath)) -> None:        
         self.__BG = {
             -1  :   Background.convert(),
             0   :   image.load(CHAR_A).convert(),
@@ -47,10 +44,9 @@ class Character(baseWindow):
             L       :   LUNATIC.convert(),
             L_T     :   LUNATIC_LOW.convert_alpha()
             }
-        print("<Char class> [Loc: in State module] ID = ", self._ID)
         self.backgrounds={-1:"home",0:"char A", 1:"char 2"}
         self.backgroundt=image.load(homeTestPath)
-        super().__init__(Background, value)
+        super().__init__(Background)
 
     def getPage(self) -> int:
         return  self._page
@@ -60,49 +56,47 @@ class Character(baseWindow):
 
     def changePage(self, direction: int)  ->None:
         self._page=(self._page+direction)%self.__netPages
-
-    # def renderUI(self, screen) -> None:
             
     def renderActivity(self, screen: Surface) -> None:    
+        screen.blit(self.__BG[self._page],(0,0))
+
         if(self._page==-1):
-            # self.changeBackground(self.__BG[-1])
-            screen.blit(self.__BG[-1],(0,0))
             if(self._choice==0):
                 screen.blit(self.__UI_panels[TOP],   (250,0))
                 screen.blit(self.__UI_panels[EZ],   (230,90))
                 screen.blit(self.__UI_panels[N_T],   (230,230))
                 screen.blit(self.__UI_panels[H_T],   (230,360))
                 screen.blit(self.__UI_panels[L_T],   (230,490))
+
             elif(self._choice==1):
                 screen.blit(self.__UI_panels[TOP],(250,0))
                 screen.blit(self.__UI_panels[EZ_T],(230,90))
                 screen.blit(self.__UI_panels[N],(230,230))
                 screen.blit(self.__UI_panels[H_T],(230,360))
                 screen.blit(self.__UI_panels[L_T],(230,490))
+
             elif(self._choice==2):
                 screen.blit(self.__UI_panels[TOP],(250,0))
                 screen.blit(self.__UI_panels[EZ_T],(230,90))
                 screen.blit(self.__UI_panels[N_T],(230,230))
                 screen.blit(self.__UI_panels[H],(230,360))
                 screen.blit(self.__UI_panels[L_T],(230,490))
+
             else:
                 screen.blit(self.__UI_panels[TOP],(250,0))
                 screen.blit(self.__UI_panels[EZ_T],(230,90))
                 screen.blit(self.__UI_panels[N_T],(230,230))
                 screen.blit(self.__UI_panels[H_T],(230,360))
                 screen.blit(self.__UI_panels[L],(230,490))   
+
         if(self._page==0): #choice 1
             screen.fill((0,0,0))
-            # self.changeBackground(self.__BG[0])
             screen.blit(self.__BG[0],(0,0))
             self.__player=0
             if(self._choice==0):...
             else:...
         else:#choice 2
-            # self.changeBackground(self.__BG[1])
-            screen.blit(self.__BG[1],(0,0))
             self.__player   = 1
-        pgm.display.update()
         
 
     @final

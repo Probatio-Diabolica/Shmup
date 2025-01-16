@@ -3,6 +3,7 @@ from pygame import Surface,image
 from time import time_ns
 from typing import final
 from .stateConf import HUD
+import json
 # from Entity import characterA
 from Entity.playables import MC
 
@@ -41,8 +42,8 @@ class play(baseWindow):
     def getPlayer(self)->MC:
         return self._Player
     
-    def __init__(self,player ,Background: Surface = image.load(HUD), value: int = 0) -> None:
-        super().__init__(Background, value)
+    def __init__(self,player ,Background: Surface = image.load(HUD),difficulty:int =0) -> None:
+        super().__init__(Background)
         # self._Player=characterA((623-48)/2,696-100,5,image.load("Assets/Player/Hitbox.png"))
         self._Player=player # type: ignore
         self._startTime = time_ns()

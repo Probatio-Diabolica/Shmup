@@ -63,6 +63,7 @@ class Game:
 
     
     def changeState(self,state:baseWindow) -> None :
+        print("CALLed line 66 game.py")
         self.__screen.fill((0,0,0))
         self.__state=state
         self.__background=state.getBackground()
@@ -153,7 +154,9 @@ class Game:
                     
                     # Start
                     if(self.__state.getChoice()==0):
+                        print("before ",self.__state.getID())
                         self.changeState(self.__stateDist[CHAR_SELECTION]) #<-later
+                        print("AFTER ",self.__state.getID())
                         # self.changeState(play())
                     
                     # Practice

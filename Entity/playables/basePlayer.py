@@ -121,23 +121,19 @@ class MC:
         return (self.__Xpos,self.__Ypos)
     
     def getSprite(self):
-        return self.__sprite
+        return self.__sprite.convert()
     
     def toggleUp(self):
-        if(self.__Up): self.__Up=False
-        else : self.__Up=True
+        self.__Up   = not self.__Up
 
     def toggleDown(self):
-        if(self.__Down): self.__Down=False
-        else : self.__Down=True
+        self.__Down = not self.__Down
 
     def toggleLeft(self):
-        if(self.__Left): self.__Left=False
-        else : self.__Left=True
+        self.__Left = not self.__Left
 
     def toggleRight(self):
-        if(self.__Right): self.__Right=False
-        else : self.__Right=True
+        self.__Right = not self.__Right
 
     def updates(self):
         self.playerMove()

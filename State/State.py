@@ -22,7 +22,7 @@ class baseWindow:
     _choiceLR:int               =0
     _background :Surface
     _page:int                   =0
-    def __init__(self,Background:Surface,value:int=0) -> None:
+    def __init__(self,Background:Surface) -> None:
         self._background = Background.convert()
         self._startTime:float   
         self._currentTime:float
@@ -200,8 +200,8 @@ class options(baseWindow):
 
 class dummyState(baseWindow):
     _ID=404
-    def __init__(self, Background: Surface = image.load(MENU_BACKGROUND_PATH), value: int = 0) -> None:
-        super().__init__(Background, value)
+    def __init__(self, Background: Surface = image.load(MENU_BACKGROUND_PATH)) -> None:
+        super().__init__(Background)
         print("dummy reached : can't switch states now [LOC : dummyState >> State.py]")
 
         
